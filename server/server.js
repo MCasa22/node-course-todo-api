@@ -6,12 +6,12 @@ const {Todo} = require('./models/todo.js');
 const {User} = require('./models/User.js');
 
 
-var app = express();
+let app = express();
 
 app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
-  var todo = new Todo({
+  let todo = new Todo({
     text: req.body.text
   });
 
@@ -31,7 +31,7 @@ app.get('/todos', (req, res) => {
     })
     .catch((e) => {
       res.status(400).send(e);
-    })
+    });
 });
 
 app.listen(3000, () => {
