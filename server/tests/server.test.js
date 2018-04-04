@@ -77,5 +77,5 @@ describe('GET /todos', () => {
         expect(res.body.todos.length).toBe(todos.length);
       })
       .end(done);
-  })
+  });
 });
