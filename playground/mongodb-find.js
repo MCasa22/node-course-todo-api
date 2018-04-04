@@ -15,25 +15,25 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   }
   console.log('Connected to MongoDB server');
 
-  // db.collection('Todos').find({
-  //   _id: new ObjectID('5ab3de9089e0d20dcd977c19')
-  // }).toArray()
-  //   .then((docs) => {
-  //     console.log('Todos');
-  //     console.log(JSON.stringify(docs, undefined, 2))
-  //   })
-  //   .catch((err) => {
-  //     console.log('unable to find Todos', err);
-  //   });
+  db.collection('Todos').find({
+    _id: new ObjectID('5ab3de9089e0d20dcd977c19')
+  }).toArray()
+    .then((docs) => {
+      console.log('Todos');
+      console.log(JSON.stringify(docs, undefined, 2))
+    })
+    .catch((err) => {
+      console.log('unable to find Todos', err);
+    });
 
-  // db.collection('Todos').find()
-  //   .count()
-  //   .then((count) => {
-  //     console.log(`Todos count: ${count}`);
-  //   })
-  //   .catch((err) => {
-  //     console.log('unable to find Todos', err);
-  //   });
+  db.collection('Todos').find()
+    .count()
+    .then((count) => {
+      console.log(`Todos count: ${count}`);
+    })
+    .catch((err) => {
+      console.log('unable to find Todos', err);
+    });
 
   db.collection('Users')
     .find({name: 'Matteo'})

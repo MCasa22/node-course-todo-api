@@ -21,30 +21,30 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   //for mongodb version 3.x.x
   //const db = client.db('TodoApp')
 
-  // db.collection('Todos').insertOne({
-  //   text: 'something to do',
-  //   completed: false
-  // }, (err, result) => {
-  //   if (err) {
-  //     return console.log('Unable to insert Todo', err);
-  //   }
-  //   //ops attribute  stores all the documents inserted (in this case 1);
-  //   console.log(JSON.stringify(result.ops, undefined, 2));
-  // });
+  db.collection('Todos').insertOne({
+    text: 'something to do',
+    completed: false
+  }, (err, result) => {
+    if (err) {
+      return console.log('Unable to insert Todo', err);
+    }
+    //ops attribute  stores all the documents inserted (in this case 1);
+    console.log(JSON.stringify(result.ops, undefined, 2));
+  });
 
-  // db.collection('Users').insertOne({
-  //   name: 'Matteo',
-  //   age: 22,
-  //   location: 'Milan'
-  // }, (err, result) => {
-  //   if (err) {
-  //     return console.log('Unable to insert User', err);
-  //   }
-  //   console.log(JSON.stringify(result.ops, undefined, 2));
-  //   //built in function to access objectId's properties;
-  //   console.log(result.ops[0]._id.getTimestamp());
-  // });
-  //
+  db.collection('Users').insertOne({
+    name: 'Matteo',
+    age: 22,
+    location: 'Milan'
+  }, (err, result) => {
+    if (err) {
+      return console.log('Unable to insert User', err);
+    }
+    console.log(JSON.stringify(result.ops, undefined, 2));
+    //built in function to access objectId's properties;
+    console.log(result.ops[0]._id.getTimestamp());
+  });
+
    //closes che connection to the database;
    db.close();
 
