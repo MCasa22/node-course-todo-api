@@ -8,6 +8,7 @@ const {User} = require('./models/User.js');
 
 
 let app = express();
+const port = proccess.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -52,8 +53,8 @@ app.get('/todos/:id', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-  console.log('server started in port 3000');
+app.listen(port, () => {
+  console.log(`started up on port ${port}`);
 });
 
 
