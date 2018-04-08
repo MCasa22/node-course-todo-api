@@ -29,6 +29,7 @@ Todo.findOne({
   console.log('todo', todo);
 });
 
+//returns an object or null
 Todo.findById(toto_id)
   .then((todo) => {
     if (!todo) {
@@ -43,6 +44,6 @@ User.findById(user_id)
     if(!user) {
       return console.log('User not found');
     }
-    console.log(JSON.stringify(user, undefined, 2));
+    console.log('User By ID', JSON.stringify(user, undefined, 2));
   })
   .catch((e) => console.log(e));
