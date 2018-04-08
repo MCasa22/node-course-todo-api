@@ -8,7 +8,7 @@ const {User} = require('./models/User.js');
 
 
 let app = express();
-const port = proccess.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
