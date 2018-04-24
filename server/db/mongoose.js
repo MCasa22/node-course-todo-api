@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
 
+//see config.example.js for configuration
+const {LOCAL_HOST, M_LAB} = require('../../config.js');
+
 mongoose.Promise = global.Promise;
 
 let db = {
-  localhost: 'mongodb://localhost:27017/TodoApp',
-  mlab: 'mongodb://dbUser:qwertyasdf@ds145438.mlab.com:45438/todo-api-db'
+  localhost: LOCAL_HOST,
+  mlab: M_LAB
 };
 mongoose.connect( process.env.PORT ? db.mlab : db.localhost);
 
