@@ -6,6 +6,7 @@ const {ObjectID} = require('mongodb');
 const {mongoose} = require('./db/mongoose.js');
 const {Todo} = require('./models/todo.js');
 const {User} = require('./models/user.js');
+const {HOST} = require('../config.js');
 
 let app = express();
 const port = process.env.PORT || 3000;
@@ -99,7 +100,8 @@ app.patch('/todos/:id', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`started up on port ${port}`);
+  console.log(`App started up on port ${port}`);
+  console.log(`Actual Environment: ${HOST}`);
 });
 
 
