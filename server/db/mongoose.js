@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 
-//see config.example.js for configuration
-const {HOST} = require('../../config.js');
-
 mongoose.Promise = global.Promise;
 
-mongoose.connect(HOST);
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log('*** Connected to DB on *** ', process.env.MONGODB_URI);
+  })
+  .catch((err) => {
+    console.log('*** There was an error *** ', err);
+  });
+
 
 
 module.exports = {
