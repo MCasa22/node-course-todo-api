@@ -32,6 +32,11 @@ const UserSchema = new mongoose.Schema({
   }]
 });
 
+/*
+It's automatically called when we respond to the express request with res.send.
+That converts our object to a string by calling JSON.stringify.
+JSON.stringify is what calls toJSON.
+*/
 UserSchema.methods.toJSON = function () {
   let user = this;
   let userObject = user.toObject();
@@ -50,6 +55,23 @@ UserSchema.methods.generateAuthToken = function () {
     .then(() => {
       return token;
     });
+};
+
+UserSchema.statics.findByToken = function (token) {
+  let User = this;
+  let decoded;
+
+  try {
+    decoded = jwt.verify(token, 'abc123');
+  } catch (err) {
+    return Promise.reject({error: 'Authentication needed'});
+  }
+
+  return User.findOne({
+    '_id': decoded._id,
+    'tokens.token': token,
+    'tokens.access': 'auth'
+  });
 };
 
 const User = mongoose.model('User', UserSchema);
